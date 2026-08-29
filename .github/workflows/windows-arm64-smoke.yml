@@ -1,0 +1,16 @@
+name: Windows ARM64 smoke
+
+on:
+  push:
+    branches: [windows-arm64-release]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-11-arm
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v6
+        with:
+          go-version: stable
+      - run: go build -o dist/gdu_windows_arm64.exe ./cmd/gdu
